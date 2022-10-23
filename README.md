@@ -1,4 +1,4 @@
-# Mesto web page
+# Timur's resume web page
 
 ## Description
 
