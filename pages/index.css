@@ -1,0 +1,31 @@
+@import url(../vendors/normalize.css);
+@import url(../blocks/body/body.css);
+
+@import url(../blocks/bio/bio.css);
+@import url(../blocks/bio/__name/bio__name.css);
+@import url(../blocks/bio/__photo/bio__photo.css);
+
+@import url(../blocks/skills/skills.css);
+@import url(../blocks/skills/__item/skills__item.css);
+
+@import url(../blocks/contacts/contacts.css);
+@import url();
+
+@import url(../blocks/content/content.css);
+
+@import url(../blocks/experience/experience.css);
+@import url();
+
+@import url(../blocks/education/education.css);
+@import url();
+
+@import url();
+@import url();
+@import url();
+@import url();
+@import url();
+@import url();
+@import url();
+@import url();
+
+@import url(../blocks/footer/footer.css);
