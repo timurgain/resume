@@ -5,11 +5,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="CV or resume Timur Gainutdinov">
+  <link rel="stylesheet" href="./pages/index.css">
   <title>Timur - web developer</title>
 </head>
 
-<body class="body">
-
+<body class="page">
   <header class="bio">
     <img class="bio__photo" src="./images/TM.jpg" alt="Timur's photo">
     <h1 class="bio__name">Timur Gainutdinov</h1>
@@ -19,17 +19,9 @@
         <li class="contacts__item">E-mail: timur.gain@gmail.com</li>
       </ul>
     </section>
-    <section class="section" aria-label="Languages">
-      <h2 class="section__title">Languages</h2>
-      <ul class="languages">
-        <li class="languages__item">English B1 (keep studying)</li>
-        <li class="languages__item">Russian native</li>
-      </ul>
-    </section>
   </header>
 
-  <main class="content"></main>
-
+  <main class="content">
     <section class="section">
       <h2 class="section__title">Hard skills</h2>
       <ul class="hard-skills">
@@ -59,31 +51,99 @@
     </section>
 
     <section class="section">
-      <h2 class="section__title">Soft skills</h2>
-      <ul class="soft-skills">
-        <li class="soft-skills__item"></li>
-        <li class="soft-skills__item"></li>
+      <h2 class="section__title">Education</h2>
+      <ul class="education">
+        <li class="education__item">
+          <p class="education__date">April 2023</p>
+          <p class="education__subject">Node.js, express.js</p>
+          <p class="education__course">Web-developer, Yandex.Practicum</p>
+        </li>
+        <li class="education__item">
+          <p class="education__date">March 2023</p>
+          <p class="education__subject">Interfaces using React</p>
+          <p class="education__course">Web-developer, Yandex.Practicum</p>
+        </li>
+        <li class="education__item">
+          <p class="education__date">January 2023</p>
+          <p class="education__subject">JavaScript (OOP, Async, API, Webpack)</p>
+          <p class="education__course">Web-developer, Yandex.Practicum</p>
+        </li>
+        <li class="education__item">
+          <p class="education__date">November 2022</p>
+          <p class="education__subject">JavaScript fundamenals</p>
+          <p class="education__course">Web-developer, Yandex.Practicum</p>
+        </li>
+        <li class="education__item">
+          <p class="education__date">September 2022</p>
+          <p class="education__subject">HTML, CSS, Responsive web layout</p>
+          <p class="education__course">Web-developer, Yandex.Practicum</p>
+        </li>
+        <li class="education__item">
+          <p class="education__date">May 2022</p>
+          <p class="education__subject">Docker, DevOps, CI/CD</p>
+          <p class="education__course">Python-developer, Yandex.Practicum</p>
+        </li>
+        <li class="education__item">
+          <p class="education__date">March 2022</p>
+          <p class="education__subject">Algorithms and data structures</p>
+          <p class="education__course">Python-developer, Yandex.Practicum</p>
+        </li>
+        <li class="education__item">
+          <p class="education__date">January 2022</p>
+          <p class="education__subject">API and Django REST framework</p>
+          <p class="education__course">Python-developer, Yandex.Practicum</p>
+        </li>
+        <li class="education__item">
+          <p class="education__date">November 2021</p>
+          <p class="education__subject">OOP, Unittest, Django framework</p>
+          <p class="education__course">Python-developer, Yandex.Practicum</p>
+        </li>
+        <li class="education__item">
+          <p class="education__date">September 2021</p>
+          <p class="education__subject">Fundamentals in Python and SQL</p>
+          <p class="education__course">Python-developer, Yandex.Practicum</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section" aria-label="Languages">
+      <h2 class="section__title">Languages</h2>
+      <ul class="languages">
+        <li class="languages__item">English B1 (keep studying)</li>
+        <li class="languages__item">Russian native</li>
       </ul>
     </section>
 
     <section class="section">
-      <h2 class="section__title">Experience</h2>
-      <p>
-        Since the fall 2019, I have been developing a Flask web application for automating internal processes with customers and suppliers.
-        The app made with Redis queue, PosgreSQL with the API of external services. Collaborating via Git with two of my colleagues.
+      <h2 class="section__title">Soft skills</h2>
+      <p class="section__paragraph">Working in the online store with a wide area of responsibility
+         and education with strict deadlines taught me universal skills:</p>
+      <ul class="soft-skills">
+        <li class="soft-skills__item">Feeling a lack of knowledge motivates me to learn;</li>
+        <li class="soft-skills__item">Able to get information in documentation, lectures and communication with people;</li>
+        <li class="soft-skills__item">Understand how to divide a complex task into a set of simple ones;</li>
+        <li class="soft-skills__item">Self-discipline helps me complete tasks on time, especially in high workload;</li>
+        <li class="soft-skills__item">Cope with the flow of various tasks, build priorities, determine resources and deadlines;</li>
+        <li class="soft-skills__item">Understand the importance of communication and cooperation;</li>
+        <li class="soft-skills__item">I am prone to critical thinking, ready to new inputs and feedback, it leads to better solutions.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2 class="section__title">Experience in development</h2>
+      <p class="section__paragraph">
+        In September 2019 with two teammates began development the Flask web application for automating routine work processes.
+        After three monthes we released a minimum viable program, that was a grandiose expansion of horizons and a breakthrough in efficiency - until recently, we did something in 20 clicks,
+        then just 1-2 clicks or without man participation. That time we felt like we were doing some kind of magic :)
       </p>
-      <p>
+      <p class="section__paragraph">
+        For the project i attracted an experienced developer as a mentor, thanks to him we got acquainted with
+         Python, Flask, Redis Queue, PostgreSQL, Git and APIs of third-party services.
+      </p>
+      <p class="section__paragraph">
         I combine development with a management position where I am responsible for
          promotion, sales, an online store, motivation and organization of work processes for employees.
       </p>
-    </section>
-
-    <section class="section">
-      <h2 class="section__title">Education</h2>
-      <ul class="education">
-        <li class="education__item"></li>
-        <li class="education__item"></li>
-      </ul>
     </section>
   </main>
 
