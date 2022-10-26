@@ -5,10 +5,28 @@
 
 @import url(../blocks/header/header.css);
 
+@import url(../blocks/contacts/contacts.css);
+@import url(../blocks/contacts/__item/contacts__item.css);
+
+@import url(../blocks/content/content.css);
+
 @import url(../blocks/bio/bio.css);
 @import url(../blocks/bio/__name/bio__name.css);
 @import url(../blocks/bio/__photo/bio__photo.css);
 
-@import url(../blocks/content/content.css);
+@import url(../blocks/section/section.css);
+@import url(../blocks/section/__title/section__title.css);
+@import url(../blocks/section/__subtitle/section__subtitle.css);
+@import url(../blocks/section/__link/section__link.css);
+@import url(../blocks/section/__paragraph/section__paragraph.css);
+
+@import url(../blocks/hard-skills/hard-skills.css);
+@import url(../blocks/hard-skills/__item/hard-skills__item.css);
+
+@import url(../blocks/can-do/can-do.css);
+@import url(../blocks/can-do/__item/can-do__item.css);
+
+@import url(../blocks/education/education.css);
+@import url(../blocks/education/__item/education__item.css);
 
 @import url(../blocks/footer/footer.css);

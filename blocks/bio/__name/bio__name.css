@@ -1,3 +1,6 @@
 .bio__name {
-  
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.1;
+  font-weight: 700;
 }

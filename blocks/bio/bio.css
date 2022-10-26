@@ -1,5 +1,9 @@
 .bio {
-  /* grid-area: bio; */
   grid-column: 1/2;
   grid-row: 1/2;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  column-gap: 3%;
 }
