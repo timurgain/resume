@@ -6,6 +6,6 @@
 }
 
 .section__link:hover {
-  color: rgba(0, 0, 0, .7);
-  border-bottom: 1px dashed rgba(0, 0, 0, .5);
+  color: rgba(0, 0, 0, .6);
+  border-bottom: 1px dashed rgba(0, 0, 0, .4);
 }
