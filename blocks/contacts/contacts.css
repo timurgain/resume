@@ -5,6 +5,6 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  column-gap: 10px;
+  column-gap: 5px;
   row-gap: 5px;
 }

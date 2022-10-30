@@ -1,6 +1,7 @@
 .section__link {
   text-decoration: none;
   border-bottom: 1px dashed rgba(0, 0, 0, 1);
+  box-sizing: border-box;
   color: rgba(0, 0, 0, 1);
   transition: color .2s linear, border-bottom .2s linear;
 }

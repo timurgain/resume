@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: 120px 1fr;
+  grid-template-columns: max-content 1fr;
+  align-items: center;
   column-gap: 3%;
 }
