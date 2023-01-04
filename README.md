@@ -2,28 +2,16 @@
 
 ## Description
 
-The project gives practice in HTML, CSS, JS and talks in pictures about beautiful places you may travel.
+It's a pet-project and a CV all in one (initial stage)
 
-[Link on the GitHub Pages](https://timurgain.github.io/mesto/)
+[Link on the GitHub Pages](https://timurgain.github.io/resume/)
 
 ## Technologies
-
-- JavaScript and the Document Object Model (DOM);
+For now there is:
 - HTML5 and semantic tags;
 - CSS3 and grid layout, flexbox, adaptive, @media, @font-face;
-- Block Element Modifier methodology.
+- Block Element Modifier methodology
+- ...
 
-## Installation and launch
+I am planning to set up a python application, depends on free time
 
-Clone repository and navigate to folder on command line:
-```
-git clone ...
-```
-
-```
-cd mesto
-```
-
-```
-open index.html
-```
