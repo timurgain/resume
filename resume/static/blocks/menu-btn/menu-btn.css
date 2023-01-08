@@ -1,0 +1,32 @@
+.menu-btn {
+  position: absolute;
+  top: 15px;
+  right: -65px;
+  z-index: 1;
+
+  width: 60px;
+  height: 60px;
+
+  border: 1px solid black;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, .5);
+
+  color: black;
+  cursor: pointer;
+  transition: background-color .2s linear;
+}
+
+.menu-btn:hover {
+  background-color: rgba(244, 152, 173, .3);
+}
+
+
+@media screen and (max-width: 1023px) {
+  .menu-btn {
+    right: 15px;
+  }
+  .menu-btn:hover {
+    background-color: rgba(244, 152, 173, .7);
+  }
+
+}
