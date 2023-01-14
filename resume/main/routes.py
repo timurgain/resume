@@ -1,7 +1,14 @@
-from flask import render_template
+from . import bp
+from .views import index, save_as_pdf
 
-from resume.main import bp
+# URL generation rule: domen/blueprint_url_prefix/bp.add_url_rule('...',)
 
-@bp.route('/')
-def index():
-    return render_template('index.html')
+bp.add_url_rule(
+    '/', methods=['GET'], provide_automatic_options=False,
+    view_func=index
+)
+
+bp.add_url_rule(
+    '/save_as_pdf', methods=['GET'], provide_automatic_options=False,
+    view_func=save_as_pdf
+)
