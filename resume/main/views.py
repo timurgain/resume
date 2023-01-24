@@ -1,3 +1,4 @@
+import json
 from flask import render_template
 
 
@@ -7,4 +8,6 @@ def index():
 
 def save_as_pdf():
     """Download resume as a pdf-file."""
-    pass
+    test_text = {"text": "Here will be pdf file"}
+
+    return json.dumps(test_text)

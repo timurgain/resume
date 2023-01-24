@@ -11,3 +11,11 @@
   opacity: 0;
   transition: visibility 0s linear 300ms, opacity 300ms;
 }
+
+@media screen and (max-width: 767px) {
+  .popup {
+    width: calc(100% - 15px);
+    background-image: linear-gradient(-70deg, rgba(46, 154, 255, .9) 60%, rgba(244, 152, 173, .5));
+  }
+
+}
