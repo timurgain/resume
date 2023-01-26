@@ -1,8 +1,9 @@
+import './index.css'; // webpack needs it
+
 // constants
 
 const menuBtn = document.querySelector('.menu-btn')
 const savePdfBtn = document.querySelector('.save-pdf')
-
 
 // components
 
