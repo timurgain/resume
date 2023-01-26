@@ -9,6 +9,6 @@ bp.add_url_rule(
 )
 
 bp.add_url_rule(
-    '/save_as_pdf', methods=['GET'], provide_automatic_options=False,
+    '/save_as_pdf', methods=['GET', 'OPTIONS'], provide_automatic_options=False,
     view_func=save_as_pdf
 )
