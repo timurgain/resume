@@ -1,4 +1,5 @@
 *.http
+.DS_Store
 
 ## python ##
 
