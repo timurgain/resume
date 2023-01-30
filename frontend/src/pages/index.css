@@ -2,6 +2,7 @@
 @import url(../vendors/fonts/fonts.css);
 
 @import url(../blocks/page/page.css);
+@import url(../blocks/page/_type/page_type_pdf.css);
 
 @import url(../blocks/header/header.css);
 
@@ -42,6 +43,7 @@
 @import url(../blocks/popup/_opened/popup_opened.css);
 
 @import url(../blocks/menu-btn/menu-btn.css);
+@import url(../blocks/menu-btn/_type/menu-btn_type_pdf.css);
 
 @import url(../blocks/menu/menu.css);
 @import url(../blocks/menu/__item/menu__item.css);

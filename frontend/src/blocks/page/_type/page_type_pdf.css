@@ -1,0 +1,14 @@
+.page_type_pdf {
+  font-size: 14px;
+  line-height: 1.2;
+  border: none;
+}
+
+@media screen and (max-width: 767px) {
+  .page_type_pdf {
+    grid-template-columns: 40% 60%;
+    grid-template-areas:
+      "header content"
+      "footer footer";
+  }
+}

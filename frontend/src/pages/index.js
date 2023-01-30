@@ -1,9 +1,9 @@
 import './index.css'; // webpack needs it
 
-import { menuBtn, savePdfBtn } from '../components/constants.js';
+import { menuBtn, savePdfBtn, pageSelectors } from '../components/constants.js';
 import { PopupMenu } from '../components/PopupMenu.js';
-import { Api } from '../components/Api.js';
-import html2pdf from '../components/html2pdf.js';
+import { PdfConstructor } from '../components/PdfConstructor.js';
+
 
 // main
 
@@ -12,7 +12,7 @@ import html2pdf from '../components/html2pdf.js';
 const menuPopup = new PopupMenu('.popup-menu', menuBtn);
 menuPopup.setEventListeners();
 
-const api = new Api();
+const pdfConstructor = new PdfConstructor('.page', pageSelectors);
 
 
 // listeners
@@ -26,15 +26,6 @@ menuBtn.addEventListener('click', () => {
 });
 
 savePdfBtn.addEventListener('click', () => {
-  menuPopup.close()
-  var element = document.getElementById('element-to-print');
-  html2pdf(element);
-
-  // api.saveAsPdf()
-  //   .then((response) => {
-  //     if (!response.ok) {throw new Error(response.status)};
-  //     return response.json()
-  //   })
-  //   .then((data) => alert(data.text))
-  //   .catch((err) => reportError(`Error in connection to server: ${err}`))
+  menuPopup.close();
+  pdfConstructor.savePdfFile();
 })
