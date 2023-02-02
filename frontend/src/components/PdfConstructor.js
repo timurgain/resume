@@ -20,8 +20,11 @@ export class PdfConstructor {
 
   _adaptElementForPdf(element) {
     element.classList.add(this._selectors.pagePdfMode);
-    this._menuBtn = element.querySelector(this._selectors.menuBtn);
-    this._menuBtn.classList.add(this._selectors.menuBtnPdfMode);
+    
+    element.querySelector(this._selectors.menuBtn).remove();
+    element.querySelector(this._selectors.popupMenu).remove();
+    element.querySelector(this._selectors.footer).remove();
+
     element.querySelectorAll(this._selectors.link).forEach(link => {
       link.getAttribute('href').startsWith('https://')
         ? link.textContent = link.getAttribute('href').slice(8)

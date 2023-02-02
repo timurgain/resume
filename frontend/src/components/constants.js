@@ -3,9 +3,10 @@ export const savePdfBtn = document.querySelector('.save-pdf');
 
 export const pageSelectors = {
   page: '.page',
+  footer: '.footer',
   pagePdfMode: 'page_type_pdf',
   menuBtn: '.menu-btn',
-  menuBtnPdfMode: 'menu-btn_type_pdf',
+  popupMenu: '.popup-menu',
   savePdfBtn: '.save-pdf',
   link: '.section__link'
 }
