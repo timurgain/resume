@@ -1,4 +1,4 @@
-import html2pdf from '../vendors/html2pdf.js';
+import html2pdf from '../../node_modules/html2pdf.js/dist/html2pdf.bundle.min.js';
 
 export class PdfConstructor {
   constructor(sourceElementSelector, selectors) {
