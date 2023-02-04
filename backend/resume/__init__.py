@@ -1,8 +1,8 @@
+from config import Config
 from flask import Flask
 
-from config import Config
-
 from .admin import bp as admin_bp
+from .auth import bp as auth_bp
 from .extensions import db
 from .main import bp as main_bp
 
@@ -18,6 +18,7 @@ def create_app(config_class=Config):
 
     # Register blueprints here
     app.register_blueprint(main_bp, url_prefix='/')
+    app.register_blueprint(auth_bp, url_prefix='/auth')
     app.register_blueprint(admin_bp, url_prefix='/admin')
 
     return app
