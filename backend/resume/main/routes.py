@@ -1,5 +1,5 @@
 from . import bp
-from .views import index, save_as_pdf
+from .views import index, test_db
 
 # URL generation rule: domen/blueprint_url_prefix/bp.add_url_rule('...',)
 
@@ -9,6 +9,6 @@ bp.add_url_rule(
 )
 
 bp.add_url_rule(
-    '/save_as_pdf', methods=['GET', 'OPTIONS'], provide_automatic_options=False,
-    view_func=save_as_pdf
+    '/test_db', methods=['GET', 'OPTIONS'], provide_automatic_options=False,
+    view_func=test_db
 )
