@@ -26,5 +26,11 @@ def create_app(config_class=Config):
 
     return app
 
-# To create the database once
-init_db()
+# 0. To create the database once, then use only alembic
+# init_db()  # uncomment to run
+
+# 1. Make migration terminal command
+# alembic revision --autogenerate -m 'here is comment'
+
+# 2. Migrate terminal command
+# alembic upgrade heads
