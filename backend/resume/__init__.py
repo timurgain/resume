@@ -3,7 +3,7 @@ from flask import Flask
 
 from .admin import bp as admin_bp
 from .auth import bp as auth_bp
-from .main import bp as main_bp
+from .api import bp as api_bp
 
 from .database import db_session, init_db
 
@@ -20,7 +20,7 @@ def create_app(config_class=Config):
         db_session.remove()
 
     # Register blueprints here
-    app.register_blueprint(main_bp, url_prefix='/')
+    app.register_blueprint(api_bp, url_prefix='/')
     app.register_blueprint(auth_bp, url_prefix='/auth')
     app.register_blueprint(admin_bp, url_prefix='/admin')
 
