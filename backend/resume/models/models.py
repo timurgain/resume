@@ -27,6 +27,10 @@ class UsersHardSkills(Base):
     hard_skill_id = Column(ForeignKey("hard_skills.id"), primary_key=True)
     user_id = Column(ForeignKey("users.id"), primary_key=True)
     order = Column(Integer, unique=False)
+
+    user = relationship("User", back_populates="hard_skills")
+    hard_skill = relationship("HardSkill", back_populates="users")
+
     def __repr__(self):
         return (f"<{type(self).__name__} "
                 f"(user_id={self.user_id}, "
