@@ -14,6 +14,9 @@ def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
 
+    # json setings
+    app.json.ensure_ascii = False
+
     # remove database session (sqlalchemy) when the application context is popped
     @app.teardown_appcontext
     def shutdown_db_session(exception=None):
