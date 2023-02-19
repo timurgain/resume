@@ -1,6 +1,6 @@
 from flask import jsonify
 from flask.views import MethodView
-from resume.utils import (_build_cross_preflight_response,
+from ..utils import (_build_cross_preflight_response,
                           _corsify_actual_response)
 
 from ..database import db_session

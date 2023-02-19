@@ -10,7 +10,7 @@
             "request": "launch",
             "module": "flask",
             "env": {
-                "FLASK_APP": "resume",
+                "FLASK_APP": "backend.resume",
                 "FLASK_DEBUG": "1"
             },
             "args": [

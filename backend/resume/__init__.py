@@ -1,4 +1,4 @@
-from config import Config
+from .config import Config
 from flask import Flask
 
 from .admin import bp as admin_bp
@@ -29,7 +29,7 @@ def create_app(config_class=Config):
 
     return app
 
-# 0. To create the database once, then use only alembic
+# 0. To create the database once, then use alembic
 # init_db()  # uncomment to run
 
 # 1. Make migration terminal command

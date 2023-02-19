@@ -42,8 +42,8 @@ class FillDataBase:
 
 
 if __name__ == '__main__':
-    init_db()
-    users = FillDataBase(User, 'backend/data/users.csv')
-    users.load_data()
+    # init_db()
+    # users = FillDataBase(User, 'backend/data/users.csv')
+    # users.load_data()
 
-    # print(str(User.query.filter(User.name == 'Timur').first()))
+    print(str(User.query.filter(User.name == 'Timur').first()))
