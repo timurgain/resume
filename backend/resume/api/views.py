@@ -1,20 +1,19 @@
-from flask import jsonify
+from http import HTTPStatus
+
+from flask import jsonify, request, make_response, Response
 from flask.views import MethodView
-from ..utils import (_build_cross_preflight_response,
-                          _corsify_actual_response)
 
 from ..database import db_session
-from ..models.models import User
 
 
-def index():
-    """The main page."""
-
-    response = jsonify({"text": "Main page data"})
+def index() -> Response:
+    """Temporary main page."""
+    response = jsonify({"temporary_text": "Main page data"})
     return response
 
 
-class ItemAPI(MethodView):
+class BaseAPIView(MethodView):
+    """Base view class with common features."""
     init_every_request = False
 
     def __init__(self, model, serializer, validator=None):
@@ -22,24 +21,62 @@ class ItemAPI(MethodView):
         self.serializer = serializer
         self.validator = validator
 
-    def _get_item(self, id):
-        return self.model.query.get(id)
+    def _response_error(self, error: Exception) -> Response:
+        """Response if error occurs."""
+        response = make_response(
+            {"Error": repr(error)}, HTTPStatus.BAD_REQUEST)
+        return self._corsify_actual_response(response)
 
+    def _make_response(func):
+        """The decorator makes response obj, handles errors."""
+        def wrapper(self, *args, **kwargs):
+            try:
+                serialized_data = func(self, *args, **kwargs)
+
+                response = make_response(serialized_data)
+                response.headers.add('Content-Type', 'application/json')
+                return self._corsify_actual_response(response)
+            except Exception as err:
+                return self._response_error(err)
+        return wrapper
+
+    @staticmethod
+    def _build_cross_preflight_response() -> Response:
+        """Makes a CORS preflight response."""
+        response = make_response()
+        response.headers.add("Access-Control-Allow-Origin", "*")
+        response.headers.add("Access-Control-Allow-Headers", "*")
+        response.headers.add("Access-Control-Allow-Methods", "*")
+        return response
+
+    @staticmethod
+    def _corsify_actual_response(response: Response) -> Response:
+        """Adds header param to the actual response. CORS needs it."""
+        response.headers.add("Access-Control-Allow-Origin", "*")
+        return response
+
+    def options(self, *args, **kwargs):
+        """Handles preflight OPTIONS method request, if CORS is used."""
+        return self._build_cross_preflight_response()
+
+
+class ItemAPI(BaseAPIView):
+    """View class is used for:
+        - representing a single model instance,
+        - (TODO) update a single model instance,
+        - (TODO) delete a single model instance."""
+
+    def _get_item(self, id):
+        try:
+            return self.model.query.get(id)
+        except Exception as err:
+            raise err
+
+    @BaseAPIView._make_response
     def get(self, id):
         item = self._get_item(id)
-        return self.serializer(item).to_response()
+        return self.serializer(item).to_dict()
 
-    # def patch(self, id):
-    #     item = self._get_item(id)
-
-    #     if self.validator is not None:
-    #         errors = self.validator.validate(item, request.json)
-    #         if errors:
-    #             return jsonify(errors), 400
-
-    #     item.update_from_json(request.json)
-    #     db_session.commit()
-    #     return jsonify(item)
 
     def delete(self, id):
         item = self._get_item(id)
@@ -47,28 +84,13 @@ class ItemAPI(MethodView):
         db_session.commit()
         return "", 204
 
-class GroupAPI(MethodView):
-    init_every_request = False
 
-    def __init__(self, model, serializer=None, validator=None):
-        self.model = model
-        self.serializer = serializer
-        self.validator = validator
+class GroupAPI(BaseAPIView):
+    """View class is used for:
+        - representing a collection of model instances,
+        - (TODO) creating a single model instance."""
 
+    @BaseAPIView._make_response
     def get(self):
         items = self.model.query.all()
-        return jsonify([item.to_json() for item in items])
-
-    # def post(self):
-
-        # errors = self.validator.validate(request.json)
-
-        # if errors:
-        #     return jsonify(errors), 400
-
-        # db_session.add(self.model.from_json(request.json))
-        # db_session.commit()
-        # return jsonify(item.to_json())
-
-
-
+        return [self.serializer(item).to_dict() for item in items]

@@ -1,4 +1,4 @@
-from flask import json, make_response
+from flask import json, make_response, Response
 from ..models.models import User
 
 class BaseSerializer:
@@ -9,19 +9,15 @@ class BaseSerializer:
     def __init__(self, obj):
         self.obj = obj
 
-    def _to_dict(self):
+    def to_dict(self) -> dict:
         fields: list = self.model.__table__.columns.keys()
         dct = {}
         for field in fields:
             dct.update({field: getattr(self.obj, field)})
         return dct
 
-    def _to_json(self):
-        data = self._to_dict()
-        return json.dumps(data)
-
-    def to_response(self):
-        response = make_response(self._to_json())
+    def to_response(self) -> Response:
+        response = make_response(self.to_dict())
         response.headers.add('Content-Type', 'application/json')
         return response
 

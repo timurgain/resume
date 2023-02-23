@@ -10,7 +10,12 @@ export class Api {
 
   saveAsPdf() {
     this._options.method = 'GET';
-    return fetch(`${this._baseUrl}/save_as_pdf`, this._options)
+    return fetch(`${this._baseUrl}/save_as_pdf`, this._options).then(response => response.json())
+  }
+
+  getUser() {
+    this._options.method = 'GET';
+    return fetch(`${this._baseUrl}/users/1`, this._options).then(response => response.json())
   }
 
 }
