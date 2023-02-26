@@ -3,15 +3,22 @@ This module runs and works separatly from the main flask app, when you need it.
 """
 import csv
 import logging
-from sys import stdout
+import os
+import sys
+
+# define carrent dir as base dir
+#   to import moduls from the same dir as this script
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+sys.path.append(os.path.dirname(BASE_DIR))
 
 from resume.database import db_session, init_db
 from resume.models.models import (Course, Education, File, HardSkill, Resume,
                                   User, UsersHardSkills)
 
+
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
-handler = logging.StreamHandler(stream=stdout)
+handler = logging.StreamHandler(stream=sys.stdout)
 formatter = logging.Formatter(
     '%(asctime)s | %(levelname)s | %(message)s | %(module)s.%(funcName)s',
     '%d/%m/%Y %H:%M:%S'
@@ -20,9 +27,10 @@ handler.setFormatter(formatter)
 logger.addHandler(handler)
 
 
-class FillDataBase:
+class Table:
     """It writes entries into database from a csv-file
     where first line must be with fieldnames."""
+
     def __init__(self, model, csv_path: str):
         self._model = model
         self._csv_path = csv_path
@@ -42,8 +50,8 @@ class FillDataBase:
 
 
 if __name__ == '__main__':
-    # init_db()
-    # users = FillDataBase(User, 'backend/data/users.csv')
-    # users.load_data()
+    init_db()
+    users = Table(User, 'backend/data/users.csv')
+    users.load_data()
 
     print(str(User.query.filter(User.name == 'Timur').first()))

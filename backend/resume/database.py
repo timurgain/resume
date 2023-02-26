@@ -1,16 +1,11 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
+from .config import Config
 
-
-# ЕСЛИ PostgreSQL и psycopg2 DBAPI
-# SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://root:pass@localhost/mydb'
-
-# ЕСЛИ SQLite (локально для разработки)
-SQLALCHEMY_DATABASE_URI = 'sqlite:///resume.db'
 
 engine = create_engine(
-    SQLALCHEMY_DATABASE_URI,
+    Config.SQLALCHEMY_DATABASE_URI,
     # connect_args={'check_same_tread': False}
 )
 
@@ -20,6 +15,7 @@ db_session = scoped_session(
 
 Base = declarative_base()
 Base.query = db_session.query_property()
+
 
 def init_db():
     # import all modules here that might define models so that

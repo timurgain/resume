@@ -1,6 +1,6 @@
 from http import HTTPStatus
 
-from flask import jsonify, request, make_response, Response
+from flask import jsonify, make_response, Response
 from flask.views import MethodView
 
 from ..database import db_session
@@ -29,6 +29,7 @@ class BaseAPIView(MethodView):
 
     def _make_response(func):
         """The decorator makes response obj, handles errors."""
+
         def wrapper(self, *args, **kwargs):
             try:
                 serialized_data = func(self, *args, **kwargs)
@@ -76,7 +77,6 @@ class ItemAPI(BaseAPIView):
     def get(self, id):
         item = self._get_item(id)
         return self.serializer(item).to_dict()
-
 
     def delete(self, id):
         item = self._get_item(id)

@@ -9,6 +9,7 @@ from ..database import Base
 # The diagram
 # https://drawsql.app/teams/tm-19/diagrams/resume-v3
 
+
 class BaseModel(Base):
     """An abstract class for the project models."""
     __abstract__ = True

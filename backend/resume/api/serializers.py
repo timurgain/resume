@@ -11,15 +11,10 @@ class BaseSerializer:
 
     def to_dict(self) -> dict:
         fields: list = self.model.__table__.columns.keys()
-        dct = {}
+        instance_data = {}
         for field in fields:
-            dct.update({field: getattr(self.obj, field)})
-        return dct
-
-    def to_response(self) -> Response:
-        response = make_response(self.to_dict())
-        response.headers.add('Content-Type', 'application/json')
-        return response
+            instance_data.update({field: getattr(self.obj, field)})
+        return instance_data
 
 
 class UserSerializer(BaseSerializer):

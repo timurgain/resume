@@ -7,9 +7,9 @@ from .api import bp as api_bp
 
 from .database import db_session, init_db
 
+
 # Flask will automatically detect the create_app() factory function
 #  and use it to create an application instance
-
 def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
