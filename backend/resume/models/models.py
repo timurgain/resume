@@ -14,8 +14,8 @@ class BaseModel(Base):
     """An abstract class for the project models."""
     __abstract__ = True
     id = Column(Integer, primary_key=True, autoincrement=True, unique=True)
-    created_at = Column(DateTime, default=datetime.utcnow())
-    updated_at = Column(DateTime, onupdate=datetime.utcnow())
+    created_at = Column(String(30), default=datetime.utcnow().isoformat())
+    updated_at = Column(String(30), onupdate=datetime.utcnow().isoformat())
 
     def __repr__(self):
         return f"<{type(self).__name__} (id={self.id})>"
@@ -36,6 +36,24 @@ class UsersHardSkills(Base):
         return (f"<{type(self).__name__} "
                 f"(user_id={self.user_id}, "
                 f"hard_skill_id={self.hard_skill_id})>")
+
+
+class UsersLanguages(Base):
+    """An association table to provide M2M for User and Language models."""
+    __tablename__ = 'users_languages'
+
+    language_id = Column(ForeignKey("languages.id"), primary_key=True)
+    user_id = Column(ForeignKey("users.id"), primary_key=True)
+    level = Column(String(50))
+    order = Column(Integer, unique=False)
+
+    user = relationship("User", back_populates="language")
+    language = relationship("Language", back_populates="users")
+
+    def __repr__(self):
+        return (f"<{type(self).__name__} "
+                f"(user_id={self.user_id}, "
+                f"language_id={self.language_id})>")
 
 
 class User(BaseModel):
@@ -83,6 +101,15 @@ class HardSkill(BaseModel):
     users = relationship('UsersHardSkills', back_populates='hard_skill')
 
 
+class Language(BaseModel):
+    """A table for languages. Connects with Resume as M2M."""
+    __tablename__ = 'languages'
+
+    title = Column(String(50), nullable=False)
+
+    users = relationship('UsersLanguages', back_populates='language')
+
+
 class Education(BaseModel):
     """A table for educations which consist of courses."""
     __tablename__ = 'educations'
@@ -104,7 +131,7 @@ class Course(BaseModel):
     education_id = Column(Integer,
                           ForeignKey('educations.id', ondelete='CASCADE'),
                           nullable=False)
-    graduate_date = Column(DateTime(), nullable=False)
+    graduate_date = Column(String(30), nullable=False)
 
     education = relationship('Education', back_populates='courses')
 

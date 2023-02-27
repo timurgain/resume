@@ -17,7 +17,7 @@ def create_app(config_class=Config):
     # json setings
     app.json.ensure_ascii = False
 
-    # remove database session (sqlalchemy) when the application context is popped
+    # remove database session (sqlalchemy) when the app context is popped
     @app.teardown_appcontext
     def shutdown_db_session(exception=None):
         db_session.remove()

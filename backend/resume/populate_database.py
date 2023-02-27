@@ -51,7 +51,16 @@ class Table:
 
 if __name__ == '__main__':
     init_db()
+
     users = Table(User, 'backend/data/users.csv')
     users.load_data()
+
+    hard_skills = Table(HardSkill, 'backend/data/hard_skills.csv')
+    hard_skills.load_data()
+
+    courses = Table(Course, 'backend/data/courses.csv')
+    courses.load_data()
+
+
 
     print(str(User.query.filter(User.name == 'Timur').first()))
