@@ -1,10 +1,10 @@
 """
 This module runs and works separatly from the main flask app, when you need it.
 """
-import csv
-import logging
 import os
 import sys
+import logging
+import csv
 
 # define carrent dir as base dir
 #   to import moduls from the same dir as this script
@@ -12,8 +12,9 @@ BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 sys.path.append(os.path.dirname(BASE_DIR))
 
 from resume.database import db_session, init_db
-from resume.models.models import (Course, Education, File, HardSkill, Resume,
-                                  User, UsersHardSkills)
+from resume.models.models import (Course, Education, File, HardSkill, Language,
+                                  Resume, User, UsersHardSkills,
+                                  UsersLanguages)
 
 
 logger = logging.getLogger(__name__)
@@ -52,15 +53,37 @@ class Table:
 if __name__ == '__main__':
     init_db()
 
-    users = Table(User, 'backend/data/users.csv')
+    users = Table(
+        User, 'backend/data/users.csv')
     users.load_data()
 
-    hard_skills = Table(HardSkill, 'backend/data/hard_skills.csv')
+    hard_skills = Table(
+        HardSkill, 'backend/data/hard_skills.csv')
     hard_skills.load_data()
 
-    courses = Table(Course, 'backend/data/courses.csv')
+    users_hard_skills = Table(
+        UsersHardSkills, 'backend/data/users_hard_skills.csv')
+    users_hard_skills.load_data()
+
+    educations = Table(
+        Education, 'backend/data/educations.csv')
+    educations.load_data()
+
+    courses = Table(
+        Course, 'backend/data/courses.csv')
     courses.load_data()
 
+    languages = Table(
+        Language, 'backend/data/languages.csv')
+    languages.load_data()
 
+    users_languages = Table(
+        UsersLanguages, 'backend/data/users_languages.csv')
+    users_languages.load_data()
+
+    resumes = Table(
+        Resume, 'backend/data/resumes.csv')
+    resumes.load_data()
 
     print(str(User.query.filter(User.name == 'Timur').first()))
+    print(str(UsersHardSkills.query.all()))

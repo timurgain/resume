@@ -47,7 +47,7 @@ class UsersLanguages(Base):
     level = Column(String(50))
     order = Column(Integer, unique=False)
 
-    user = relationship("User", back_populates="language")
+    user = relationship("User", back_populates="languages")
     language = relationship("Language", back_populates="users")
 
     def __repr__(self):
@@ -75,6 +75,7 @@ class User(BaseModel):
     files = relationship('File', back_populates='user',
                          cascade="all, delete", passive_deletes=True)
     hard_skills = relationship('UsersHardSkills', back_populates='user')
+    languages = relationship('UsersLanguages', back_populates='user')
     educations = relationship('Education', back_populates='user',
                               cascade="all, delete", passive_deletes=True)
     resumes = relationship('Resume', back_populates='user',
