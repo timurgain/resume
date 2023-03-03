@@ -29,7 +29,7 @@ logger.addHandler(handler)
 
 
 class Table:
-    """It writes entries into database from a csv-file
+    """It reads csv and writes entries into database from a csv-file
     where first line must be with fieldnames."""
 
     def __init__(self, model, csv_path: str):
@@ -50,7 +50,8 @@ class Table:
                     f' in the {self._model.__tablename__} table')
 
 
-if __name__ == '__main__':
+def populate_db():
+    """Run it to populate multiple tables in a database."""
     init_db()
 
     users = Table(
@@ -85,5 +86,48 @@ if __name__ == '__main__':
         Resume, 'backend/data/resumes.csv')
     resumes.load_data()
 
-    print(str(User.query.filter(User.name == 'Timur').first()))
-    print(str(UsersHardSkills.query.all()))
+
+if __name__ == '__main__':
+
+    # populate_db()
+
+    resume = Resume.query.get(1)
+    user = resume.user
+    hard_skills = user.hard_skills
+    educations = user.educations
+    for education in educations:
+        courses = education.courses
+        for course in courses:
+            print(course.title, course.graduate_date)
+
+    # user = User.query.filter(User.name == 'Timur').first()
+    # print(str(user))
+    # tm_id = user.id
+
+    # resume = Resume.query.filter(Resume.user_id == tm_id).first()
+    # print(str(resume))
+
+    # hard_skills = (
+    #     UsersHardSkills.query
+    #     .filter(UsersHardSkills.user_id == tm_id)
+    #     .order_by(UsersHardSkills.order.asc()).all()
+    # )
+    # for item in hard_skills:
+    #     hard_skill = HardSkill.query.get(item.hard_skill_id)
+    #     print(str(hard_skill.title))
+
+    # educations = (
+    #     Education.query
+    #     .filter(Education.user_id == tm_id).all()
+    # )
+    # print(str(educations))
+    # for edu in educations:
+    #     courses = (
+    #         Course.query
+    #         .filter(Course.education_id == edu.id).all()
+    #     )
+    #     for course in courses:
+    #         print(course.title, course.graduate_date)
+
+    # print(str(UsersHardSkills.query.all()))
+    # print(str(db_session.query(Course.title).all()))

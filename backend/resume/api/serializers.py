@@ -1,5 +1,8 @@
-from flask import json, make_response, Response
-from ..models.models import User
+from flask import Response, json, make_response
+
+from ..models.models import (Course, Education, HardSkill, Language, Resume,
+                             User, UsersHardSkills, UsersLanguages)
+
 
 class BaseSerializer:
     """Basic serializer class. Inherit from it and assign a model attribute."""
@@ -20,3 +23,28 @@ class BaseSerializer:
 class UserSerializer(BaseSerializer):
     """Serializer for User model."""
     model = User
+
+
+class HardSkillSerializer(BaseSerializer):
+    """Serializer for HardSkill model."""
+    model = HardSkill
+
+
+class EducationSerializer(BaseSerializer):
+    """Serializer for Education model."""
+    model = Education
+
+
+class CourseSerializer(BaseSerializer):
+    """Serializer for Course model."""
+    model = Course
+
+
+class LanguageSerializer(BaseSerializer):
+    """Serializer for Language model."""
+    model = Language
+
+
+class ResumeSerializer(BaseSerializer):
+    """Serializer for Resume model."""
+    model = Resume
