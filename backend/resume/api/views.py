@@ -28,7 +28,7 @@ class BaseAPIView(MethodView):
         return self._corsify_actual_response(response)
 
     def _make_response(func):
-        """The decorator makes response obj, handles errors."""
+        """The decorator makes response obj and handles errors."""
 
         def wrapper(self, *args, **kwargs):
             try:
@@ -76,7 +76,9 @@ class ItemAPI(BaseAPIView):
     @BaseAPIView._make_response
     def get(self, id):
         item = self._get_item(id)
-        return self.serializer(item).to_dict()
+        serializer = self.serializer()
+        return serializer.dump(item)
+        # return self.serializer(item).to_dict()
 
     def delete(self, id):
         item = self._get_item(id)
@@ -93,4 +95,5 @@ class GroupAPI(BaseAPIView):
     @BaseAPIView._make_response
     def get(self):
         items = self.model.query.all()
-        return [self.serializer(item).to_dict() for item in items]
+        serializer = self.serializer(many=True)
+        return serializer.dump(items)
