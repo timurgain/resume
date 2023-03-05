@@ -1,0 +1,7 @@
+.education__item {
+  display: flex;
+  row-gap: 5px;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0;
+}

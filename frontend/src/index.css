@@ -1,0 +1,48 @@
+@import url(./vendors/normalize.css);
+@import url(./vendors/fonts/fonts.css);
+
+@import url(./blocks/page/page.css);
+@import url(./blocks/page/_type/page_type_pdf.css);
+
+@import url(./blocks/header/header.css);
+
+@import url(./blocks/contacts/contacts.css);
+@import url(./blocks/contacts/__item/contacts__item.css);
+
+@import url(./blocks/content/content.css);
+
+@import url(./blocks/bio/bio.css);
+@import url(./blocks/bio/__name/bio__name.css);
+@import url(./blocks/bio/__photo/bio__photo.css);
+
+@import url(./blocks/section/section.css);
+@import url(./blocks/section/__title/section__title.css);
+@import url(./blocks/section/__subtitle/section__subtitle.css);
+@import url(./blocks/section/__link/section__link.css);
+@import url(./blocks/section/__paragraph/section__paragraph.css);
+@import url(./blocks/section/__paragraph/_layout/section__paragraph_layout_above-list.css);
+
+@import url(./blocks/hard-skills/hard-skills.css);
+@import url(./blocks/hard-skills/__item/hard-skills__item.css);
+
+@import url(./blocks/education/education.css);
+@import url(./blocks/education/__item/education__item.css);
+@import url(./blocks/education/__date/education__date.css);
+@import url(./blocks/education/__subject/education__subject.css);
+
+@import url(./blocks/languages/languages.css);
+@import url(./blocks/languages/__item/languages__item.css);
+
+@import url(./blocks/list/list.css);
+@import url(./blocks/list/__item/list__item.css);
+
+@import url(./blocks/footer/footer.css);
+@import url(./blocks/footer/__paragraph/footer__paragraph.css);
+
+@import url(./blocks/popup/popup.css);
+@import url(./blocks/popup/_opened/popup_opened.css);
+
+@import url(./blocks/menu-btn/menu-btn.css);
+
+@import url(./blocks/menu/menu.css);
+@import url(./blocks/menu/__item/menu__item.css);

@@ -1,0 +1,7 @@
+.bio__photo {
+  max-width: 130px;
+  object-position: center;
+  object-fit: cover;
+  border-radius: 50%;
+  grid-row: 1/3;
+}

@@ -1,4 +1,4 @@
-import html2pdf from '../../node_modules/html2pdf.js/dist/html2pdf.bundle.min.js';
+import html2pdf from 'html2pdf.js/dist/html2pdf.bundle.min.js';
 
 export class PdfConstructor {
   constructor(sourceElementSelector, selectors) {
@@ -20,7 +20,7 @@ export class PdfConstructor {
 
   _adaptElementForPdf(element) {
     element.classList.add(this._selectors.pagePdfMode);
-    
+
     element.querySelector(this._selectors.menuBtn).remove();
     element.querySelector(this._selectors.popupMenu).remove();
     element.querySelector(this._selectors.footer).remove();
