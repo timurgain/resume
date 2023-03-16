@@ -1,6 +1,6 @@
 import html2pdf from 'html2pdf.js/dist/html2pdf.bundle.min.js';
 
-export class PdfConstructor {
+class PdfConstructor {
   constructor(sourceElementSelector, selectors) {
     this._selectors = selectors
     this._sourceElement = document.querySelector(sourceElementSelector);
@@ -40,3 +40,19 @@ export class PdfConstructor {
   }
 
 }
+
+
+export const pageSelectors = {
+  page: '.page',
+  footer: '.footer',
+  pagePdfMode: 'page_type_pdf',
+  menuBtn: '.menu-btn',
+  popupMenu: '.popup-menu',
+  savePdfBtn: '.save-pdf',
+  link: '.section__link'
+}
+
+const pdfConstructor = new PdfConstructor('.page', pageSelectors);
+
+export default pdfConstructor
+

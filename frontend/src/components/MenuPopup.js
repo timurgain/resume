@@ -1,4 +1,5 @@
 import React from "react";
+import pdfConstructor from "../utils/PdfConstructor";
 
 function MenuPopup() {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -45,6 +46,7 @@ function MenuPopup() {
 
   function handleSavePDF() {
     console.log("handleSavePDF");
+    pdfConstructor.savePdfFile()
   }
 
   return (

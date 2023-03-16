@@ -1,8 +1,0 @@
-.content {
-  grid-area: content;
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  padding: 10px 3% 10px;
-  box-sizing: border-box;
-}
