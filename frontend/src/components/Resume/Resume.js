@@ -9,7 +9,7 @@ function Resume({ user, article, ...props }) {
     <>
       <header className="header">
         <Bio {...user} />
-        <HardSkills />
+        <HardSkills hardSkills={user.hard_skills} />
         <Education />
         <Languages />
       </header>

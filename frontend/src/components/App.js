@@ -6,8 +6,13 @@ import openApi from "../utils/openApi";
 
 function App() {
   const [resume, setResume] = React.useState({
-    article: "loading...",
-    user: { name: "Name", surname: "Surname", telegram: "link" },
+    article: "Loading...",
+    user: {
+      name: "Name",
+      surname: "Surname",
+      telegram: "link",
+      hard_skills: [{id: 1, order: 1, title: "Loading..."}],
+    },
   });
 
   React.useEffect(() => {
