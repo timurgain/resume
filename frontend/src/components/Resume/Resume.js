@@ -29,6 +29,7 @@ function Resume() {
           ],
         },
       ],
+      languages: [{ id: 1, order: 1, title: "Loading...", level: "" }],
     },
   });
 
@@ -42,7 +43,7 @@ function Resume() {
         <Bio {...resume.user} />
         <HardSkills hardSkills={resume.user.hard_skills} />
         <Education educations={resume.user.educations} />
-        <Languages />
+        <Languages languages={resume.user.languages} />
       </header>
       <Article article={resume.article} />
     </>
