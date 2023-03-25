@@ -45,7 +45,6 @@ function MenuPopup() {
   }
 
   function handleSavePDF() {
-    console.log("handleSavePDF");
     pdfConstructor.savePdfFile()
   }
 

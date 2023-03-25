@@ -1,57 +1,83 @@
-function Education() {
+const React = require("react");
+
+function Education({ educations, ...props }) {
+
+  // const [educations, setEducations] = React.useState(educationsInitial);
+
+  // React.useEffect(() => {
+
+  //   function sortEducations() {
+  //     const edu = educations.map((element) => {
+  //       console.log(typeof element.courses)
+  //       return element.courses.sort(
+  //         (a, b) => new Date(b.graduate_date) - new Date(a.graduate_date)
+  //       );
+  //     });
+  //     edu.sort(
+  //       (a, b) =>
+  //         new Date(a.courses[0].graduate_date) -
+  //         new Date(b.courses[0].graduate_date)
+  //     );
+  //     return edu
+  //   }
+
+  //   const sortedEdu = sortEducations()
+  //   setEducations(sortedEdu)
+
+  // }, [educations])
+
+  function sortEducations() {
+    educations.forEach((element) => {
+      element.courses.sort(
+        (a, b) => new Date(b.graduate_date) - new Date(a.graduate_date)
+      );
+    });
+    educations.sort(
+      (a, b) =>
+        new Date(a.courses[0].graduate_date) -
+        new Date(b.courses[0].graduate_date)
+    );
+  }
+
+  function getEducationsMarkup() {
+    sortEducations();
+    return educations.map((education) => {
+      return (
+        <li key={education.id}>
+          <p key={education.id} className="section__subtitle">
+            {education.title}
+          </p>
+          <ul className="education">{getCoursesMarkup(education.courses)}</ul>
+        </li>
+      );
+    });
+  }
+
+  function getCoursesMarkup(courses) {
+    console.log(typeof courses, educations)
+    return courses.map((course) => {
+      return (
+        <li key={course.id} className="education__item">
+          <p className="education__subject">{course.title}</p>
+          <p className="education__date">
+            {getMonthYear(course.graduate_date)}
+          </p>
+        </li>
+      );
+    });
+  }
+
+  function getMonthYear(dateStrISO) {
+    return new Date(dateStrISO).toLocaleString("en-us", {
+      month: "long",
+      year: "numeric",
+    });
+  }
+
   return (
     <section className="section">
       <h2 className="section__title">Education</h2>
-      <p className="section__subtitle">
-        I study at Yandex School of Data Analysis (Yandex.Practicum), here're
-        the subjects:
-      </p>
-      <ul className="education">
-        <li className="education__item">
-          <p className="education__subject">Node.js, express.js</p>
-          <p className="education__date">April 2023</p>
-        </li>
-        <li className="education__item">
-          <p className="education__subject">Interfaces using React</p>
-          <p className="education__date">March 2023</p>
-        </li>
-        <li className="education__item">
-          <p className="education__subject">
-            JavaScript, OOP, Async, API, Webpack
-          </p>
-          <p className="education__date">January 2023</p>
-        </li>
-        <li className="education__item">
-          <p className="education__subject">JavaScript fundamenals</p>
-          <p className="education__date">November 2022</p>
-        </li>
-        <li className="education__item">
-          <p className="education__subject">
-            HTML, CSS, BEM, Responsive layout
-          </p>
-          <p className="education__date">September 2022</p>
-        </li>
-        <li className="education__item">
-          <p className="education__subject">Docker, DevOps, CI/CD</p>
-          <p className="education__date">May 2022</p>
-        </li>
-        <li className="education__item">
-          <p className="education__subject">Algorithms and data structures</p>
-          <p className="education__date">March 2022</p>
-        </li>
-        <li className="education__item">
-          <p className="education__subject">Django REST framework and API</p>
-          <p className="education__date">January 2022</p>
-        </li>
-        <li className="education__item">
-          <p className="education__subject">Django, OOP, Unittest</p>
-          <p className="education__date">November 2021</p>
-        </li>
-        <li className="education__item">
-          <p className="education__subject">Python and SQL fundamentals</p>
-          <p className="education__date">September 2021</p>
-        </li>
-      </ul>
+      <ul className="education">{getEducationsMarkup()}</ul>
     </section>
   );
 }

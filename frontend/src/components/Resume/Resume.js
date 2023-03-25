@@ -16,6 +16,19 @@ function Resume() {
       linkedin: "link",
       github: "link",
       hard_skills: [{ id: 1, order: 1, title: "Loading..." }],
+      educations: [
+        {
+          id: 1,
+          title: "education",
+          courses: [
+            {
+              id: 1,
+              title: "course",
+              graduate_date: "2021-09-01T00:00:00.000000",
+            },
+          ],
+        },
+      ],
     },
   });
 
@@ -28,7 +41,7 @@ function Resume() {
       <header className="header">
         <Bio {...resume.user} />
         <HardSkills hardSkills={resume.user.hard_skills} />
-        <Education />
+        <Education educations={resume.user.educations} />
         <Languages />
       </header>
       <Article article={resume.article} />

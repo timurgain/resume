@@ -1,7 +1,6 @@
 import React from "react";
 
 function HardSkills({ hardSkills }) {
-  React.useEffect(() => console.log(hardSkills), [hardSkills]);
 
   function getListItems() {
 

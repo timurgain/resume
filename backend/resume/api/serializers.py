@@ -15,7 +15,8 @@ class UserSerializer(Schema):
     linkedin = fields.Url()
     github = fields.Url()
     hard_skills = fields.Method('get_hard_skills')
-    educations = fields.List(fields.Nested('EducationSerializer'))
+    educations = fields.List(fields.Nested(
+        'EducationSerializer', exclude=('user_id',)))
     languages = fields.Method('get_languages')
 
     def get_hard_skills(self, user_obj):
@@ -60,7 +61,8 @@ class EducationSerializer(Schema):
     id = fields.Integer()
     title = fields.String()
     user_id = fields.Integer()
-    courses = fields.List(fields.Nested('CourseSerializer'))
+    courses = fields.List(fields.Nested(
+        'CourseSerializer', exclude=('education_id',)))
 
 
 class CourseSerializer(Schema):
