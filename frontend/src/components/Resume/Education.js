@@ -1,34 +1,9 @@
-const React = require("react");
+import React from "react";
 
 function Education({ educations, ...props }) {
-
-  // const [educations, setEducations] = React.useState(educationsInitial);
-
-  // React.useEffect(() => {
-
-  //   function sortEducations() {
-  //     const edu = educations.map((element) => {
-  //       console.log(typeof element.courses)
-  //       return element.courses.sort(
-  //         (a, b) => new Date(b.graduate_date) - new Date(a.graduate_date)
-  //       );
-  //     });
-  //     edu.sort(
-  //       (a, b) =>
-  //         new Date(a.courses[0].graduate_date) -
-  //         new Date(b.courses[0].graduate_date)
-  //     );
-  //     return edu
-  //   }
-
-  //   const sortedEdu = sortEducations()
-  //   setEducations(sortedEdu)
-
-  // }, [educations])
-
-  function sortEducations() {
-    educations.forEach((element) => {
-      element.courses.sort(
+  React.useMemo(() => {
+    educations.forEach((edu) => {
+      edu.courses.sort(
         (a, b) => new Date(b.graduate_date) - new Date(a.graduate_date)
       );
     });
@@ -37,10 +12,9 @@ function Education({ educations, ...props }) {
         new Date(a.courses[0].graduate_date) -
         new Date(b.courses[0].graduate_date)
     );
-  }
+  }, [educations]);
 
   function getEducationsMarkup() {
-    sortEducations();
     return educations.map((education) => {
       return (
         <li key={education.id}>
@@ -54,7 +28,6 @@ function Education({ educations, ...props }) {
   }
 
   function getCoursesMarkup(courses) {
-    console.log(typeof courses, educations)
     return courses.map((course) => {
       return (
         <li key={course.id} className="education__item">

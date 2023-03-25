@@ -1,11 +1,12 @@
 import React from "react";
 
 function HardSkills({ hardSkills }) {
+  React.useMemo(
+    () => hardSkills.sort((a, b) => a.order - b.order),
+    [hardSkills]
+  );
 
   function getListItems() {
-
-    hardSkills.sort((a, b) => a.order - b.order)
-
     return hardSkills.map((skill) => {
       return (
         <li key={skill.id} className="hard-skills__item">
