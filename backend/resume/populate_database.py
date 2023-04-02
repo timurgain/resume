@@ -49,6 +49,16 @@ class Table:
         logger.info(f'recorded {len(entries)} entries'
                     f' in the {self._model.__tablename__} table')
 
+    def load_image_file(self):
+        entries: list[dict] = self._get_csv_data()
+        for entry in entries:
+            with open(entry.get('data'), 'rb') as file:
+                entry.update({'data': file.read()})
+                db_session.add(self._model(**entry))
+        db_session.commit()
+        logger.info(f'recorded {len(entries)} entries'
+                    f' in the {self._model.__tablename__} table')
+
 
 def populate_db():
     """Run it to populate multiple tables in a database."""
@@ -86,19 +96,23 @@ def populate_db():
         Resume, 'backend/data/resumes.csv')
     resumes.load_data()
 
+    files = Table(
+        File, 'backend/data/files.csv')
+    files.load_image_file()
+
 
 if __name__ == '__main__':
 
     # populate_db()
 
-    resume = Resume.query.get(1)
-    user = resume.user
-    hard_skills = user.hard_skills
-    educations = user.educations
-    for education in educations:
-        courses = education.courses
-        for course in courses:
-            print(course.title, course.graduate_date)
+    # resume = Resume.query.get(1)
+    # user = resume.user
+    # hard_skills = user.hard_skills
+    # educations = user.educations
+    # for education in educations:
+    #     courses = education.courses
+    #     for course in courses:
+    #         print(course.title, course.graduate_date)
 
     # user = User.query.filter(User.name == 'Timur').first()
     # print(str(user))

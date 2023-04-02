@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from sqlalchemy import (Boolean, Column, DateTime, ForeignKey, Integer,
+from sqlalchemy import (Boolean, Column, DateTime, Enum, ForeignKey, Integer,
                         LargeBinary, String, Table, Text)
 from sqlalchemy.orm import relationship
 
@@ -85,9 +85,11 @@ class User(BaseModel):
 class File(BaseModel):
     """A table for avatars, sertificates etc."""
     __tablename__ = 'files'
+    FILETYPES = 'avatar', 'certificate'
 
-    filename = Column(String(50))
-    data = Column(LargeBinary)
+    data = Column(LargeBinary, nullable=False)
+    filetype = Column(Enum(FILETYPES, name='filetype'), nullable=False)
+    filename = Column(String(50), nullable=False)
     user_id = Column(Integer, ForeignKey('users.id', ondelete='CASCADE'),
                      nullable=False)
     user = relationship('User', back_populates='files')
@@ -98,7 +100,6 @@ class HardSkill(BaseModel):
     __tablename__ = 'hard_skills'
 
     title = Column(String(50), nullable=False)
-
     users = relationship('UsersHardSkills', back_populates='hard_skill')
 
 
@@ -107,7 +108,6 @@ class Language(BaseModel):
     __tablename__ = 'languages'
 
     title = Column(String(50), nullable=False)
-
     users = relationship('UsersLanguages', back_populates='language')
 
 
@@ -116,7 +116,6 @@ class Education(BaseModel):
     __tablename__ = 'educations'
 
     title = Column(String(100), nullable=False)
-
     user_id = Column(Integer, ForeignKey('users.id', ondelete='CASCADE'),
                      nullable=False)
     user = relationship('User', back_populates='educations')
@@ -133,7 +132,6 @@ class Course(BaseModel):
                           ForeignKey('educations.id', ondelete='CASCADE'),
                           nullable=False)
     graduate_date = Column(String(30), nullable=False)
-
     education = relationship('Education', back_populates='courses')
 
 
@@ -144,5 +142,4 @@ class Resume(BaseModel):
     article = Column(Text())
     user_id = Column(Integer, ForeignKey('users.id', ondelete='CASCADE'),
                      nullable=False)
-
     user = relationship('User', back_populates='resumes')
