@@ -3,7 +3,17 @@
 # from ..models.models import (Course, Education, HardSkill, Language, Resume,
 #                              User, UsersHardSkills, UsersLanguages)
 
+from io import BytesIO
+from flask import send_file
 from marshmallow import Schema, fields
+
+
+class FileSerializer:
+    """Serializer for File model, adjusts for the marshmallow method dump()"""
+    @staticmethod
+    def dump(binary):
+        file = BytesIO(binary.data)
+        return send_file(file, mimetype='image/jpeg')
 
 
 class UserSerializer(Schema):

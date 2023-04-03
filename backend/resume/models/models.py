@@ -88,7 +88,7 @@ class File(BaseModel):
     FILETYPES = 'avatar', 'certificate'
 
     data = Column(LargeBinary, nullable=False)
-    filetype = Column(Enum(FILETYPES, name='filetype'), nullable=False)
+    filetype = Column(Enum(*FILETYPES, name='filetype'), nullable=False)
     filename = Column(String(50), nullable=False)
     user_id = Column(Integer, ForeignKey('users.id', ondelete='CASCADE'),
                      nullable=False)

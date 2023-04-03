@@ -1,9 +1,9 @@
 from ..models.models import (Course, Education, HardSkill, Language, Resume,
-                             User, UsersHardSkills, UsersLanguages)
+                             User, File, UsersHardSkills, UsersLanguages)
 from . import bp
 from .serializers import (CourseSerializer, EducationSerializer,
                           HardSkillSerializer, LanguageSerializer,
-                          ResumeSerializer, UserSerializer)
+                          ResumeSerializer, UserSerializer, FileSerializer)
 from .views import GroupAPI, ItemAPI, index
 
 # URL generation rule: domen/blueprint_url_prefix/bp.add_url_rule('...',)
@@ -27,6 +27,11 @@ def register_api(blueprint, model, name, serializer):
         view_func=GroupAPI.as_view(f"{name}-group", model, serializer)
     )
 
+
+register_api(
+    blueprint=bp, model=File, name="files",
+    serializer=FileSerializer
+)
 
 register_api(
     blueprint=bp, model=User, name="users",

@@ -10,10 +10,19 @@ class OpenApi {
     }
   }
 
-  // User
   getResume(id) {
     this._options.method = 'GET';
     return this._request(`${this._baseUrl}/resumes/${id}`)
+  }
+
+  getImage(id) {
+    this._options.method = 'GET';
+    return fetch(`${this._baseUrl}/files/${id}`, this._options)
+      .then(response => {
+        if (!response.ok) return Promise.reject(`Ошибка: ${response.status}`);
+        return response.blob();
+      })
+      .then(blob => URL.createObjectURL(blob))
   }
 
   _request(url) {
@@ -21,10 +30,8 @@ class OpenApi {
   }
 
   _convertResponseToJson(response) {
-    if (response.ok) {
-      return response.json();
-    }
-    return Promise.reject(`Ошибка: ${response.status}`);
+    if (!response.ok) return Promise.reject(`Ошибка: ${response.status}`);
+    return response.json();
   }
 
 }

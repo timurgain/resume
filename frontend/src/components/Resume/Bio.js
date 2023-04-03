@@ -1,9 +1,7 @@
-import defaultAvatarPath from "../../images/TM.jpg";
-
-function Bio({name, surname, telegram, linkedin, github, ...props}) {
+function Bio({name, surname, telegram, linkedin, github, avatarUrl, ...props}) {
   return (
     <figure className="bio">
-      <img className="bio__photo" src={defaultAvatarPath} alt="Avatar" />
+      <img className="bio__photo" src={avatarUrl} alt="Avatar" />
       <figcaption>
         <h1 className="bio__name">{`${name} ${surname}`}</h1>
       </figcaption>

@@ -78,7 +78,6 @@ class ItemAPI(BaseAPIView):
         item = self._get_item(id)
         serializer = self.serializer()
         return serializer.dump(item)
-        # return self.serializer(item).to_dict()
 
     def delete(self, id):
         item = self._get_item(id)
