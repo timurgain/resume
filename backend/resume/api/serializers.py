@@ -1,19 +1,13 @@
-# from flask import Response, json, make_response
-
-# from ..models.models import (Course, Education, HardSkill, Language, Resume,
-#                              User, UsersHardSkills, UsersLanguages)
-
-from io import BytesIO
-from flask import send_file
 from marshmallow import Schema, fields
 
 
-class FileSerializer:
-    """Serializer for File model, adjusts for the marshmallow method dump()"""
-    @staticmethod
-    def dump(binary):
-        file = BytesIO(binary.data)
-        return send_file(file, mimetype='image/jpeg')
+class FileSerializer(Schema):
+    """Serializer for File model."""
+    id = fields.Integer(dump_only=True)
+    large_binary = fields.Raw(type='file')
+    filetype = fields.String()
+    filename = fields.String()
+    user_id = fields.Integer()
 
 
 class UserSerializer(Schema):

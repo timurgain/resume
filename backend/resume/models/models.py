@@ -73,7 +73,7 @@ class User(BaseModel):
     github = Column(String(100))
 
     files = relationship('File', back_populates='user',
-                         cascade="all, delete", passive_deletes=True)
+                         cascade="all, delete", passive_deletes=True, lazy='dynamic')
     hard_skills = relationship('UsersHardSkills', back_populates='user')
     languages = relationship('UsersLanguages', back_populates='user')
     educations = relationship('Education', back_populates='user',
@@ -87,7 +87,7 @@ class File(BaseModel):
     __tablename__ = 'files'
     FILETYPES = 'avatar', 'certificate'
 
-    data = Column(LargeBinary, nullable=False)
+    large_binary = Column(LargeBinary, nullable=False)
     filetype = Column(Enum(*FILETYPES, name='filetype'), nullable=False)
     filename = Column(String(50), nullable=False)
     user_id = Column(Integer, ForeignKey('users.id', ondelete='CASCADE'),

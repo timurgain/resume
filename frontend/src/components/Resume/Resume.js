@@ -8,7 +8,7 @@ import Article from "./Article";
 import defaultAvatarPath from "../../images/bag-on-head.png";
 
 function Resume() {
-  const [avatarUrl, setAvatarUrl] = React.useState(defaultAvatarPath)
+  const [avatarUrl, setAvatarUrl] = React.useState(defaultAvatarPath);
   const [resume, setResume] = React.useState({
     article: "waiting for data...",
     user: {
@@ -37,10 +37,8 @@ function Resume() {
 
   React.useEffect(() => {
     openApi.getResume(1).then((data) => setResume(data));
-    openApi.getImage(1).then((url) => setAvatarUrl(url));
+    openApi.getImage(1, 'avatar').then((url) => setAvatarUrl(url));
   }, []);
-
-
 
   return (
     <>

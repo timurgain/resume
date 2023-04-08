@@ -1,9 +1,11 @@
 from http import HTTPStatus
+from io import BytesIO
 
-from flask import jsonify, make_response, Response
+from flask import Response, jsonify, make_response, request, send_file
 from flask.views import MethodView
 
 from ..database import db_session
+from ..models.models import File, Resume
 
 
 def index() -> Response:
@@ -16,7 +18,7 @@ class BaseAPIView(MethodView):
     """Base view class with common features."""
     init_every_request = False
 
-    def __init__(self, model, serializer, validator=None):
+    def __init__(self, model, serializer=None, validator=None):
         self.model = model
         self.serializer = serializer
         self.validator = validator
@@ -56,13 +58,34 @@ class BaseAPIView(MethodView):
         response.headers.add("Access-Control-Allow-Origin", "*")
         return response
 
+    @staticmethod
+    def _secure_response(response: Response) -> Response:
+        """Protects from cross-site scripting(XSS)."""
+        response.headers.add("Content-Security-Policy", "default-src 'self';")
+
     def options(self, *args, **kwargs):
         """Handles preflight OPTIONS method request, if CORS is used."""
         return self._build_cross_preflight_response()
 
 
-class ItemAPI(BaseAPIView):
-    """View class is used for:
+class FileAPI(BaseAPIView):
+    """View class is used to send large_binary as a file."""
+    @BaseAPIView._make_response
+    def get(self):
+        resume_id = request.args.get('resume')
+        filetype = request.args.get('type')
+        user = Resume.query.get(resume_id).user
+        file = File.query.filter(
+            File.user == user, File.filetype == filetype
+        ).first()
+        serializer = self.serializer()
+        serialized_data = serializer.dump(file)
+        data = BytesIO(serialized_data['large_binary'])
+        return send_file(data, mimetype='image/jpeg')
+
+
+class CommonItemAPI(BaseAPIView):
+    """Common view class is used for:
         - representing a single model instance,
         - (TODO) update a single model instance,
         - (TODO) delete a single model instance."""
@@ -86,8 +109,8 @@ class ItemAPI(BaseAPIView):
         return "", 204
 
 
-class GroupAPI(BaseAPIView):
-    """View class is used for:
+class CommonGroupAPI(BaseAPIView):
+    """Common view class is used for:
         - representing a collection of model instances,
         - (TODO) creating a single model instance."""
 

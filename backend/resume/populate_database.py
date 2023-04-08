@@ -52,8 +52,8 @@ class Table:
     def load_image_file(self):
         entries: list[dict] = self._get_csv_data()
         for entry in entries:
-            with open(entry.get('data'), 'rb') as file:
-                entry.update({'data': file.read()})
+            with open(entry.get('large_binary'), 'rb') as file:
+                entry.update({'large_binary': file.read()})
                 db_session.add(self._model(**entry))
         db_session.commit()
         logger.info(f'recorded {len(entries)} entries'
@@ -103,7 +103,7 @@ def populate_db():
 
 if __name__ == '__main__':
 
-    # populate_db()
+    populate_db()
 
     # resume = Resume.query.get(1)
     # user = resume.user

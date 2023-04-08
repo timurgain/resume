@@ -23,7 +23,7 @@ def create_app(config_class=Config):
         db_session.remove()
 
     # Register blueprints here
-    app.register_blueprint(api_bp, url_prefix='/')
+    app.register_blueprint(api_bp, url_prefix='/api')
     app.register_blueprint(auth_bp, url_prefix='/auth')
     app.register_blueprint(admin_bp, url_prefix='/admin')
 
