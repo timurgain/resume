@@ -1,11 +1,11 @@
-from http import HTTPStatus
 from io import BytesIO
-
+from werkzeug.exceptions import BadRequestKeyError
 from flask import Response, jsonify, make_response, request, send_file
 from flask.views import MethodView
 
 from ..database import db_session
 from ..models.models import File, Resume
+from ..exceptions import DatabaseNoResultError
 
 
 def index() -> Response:
@@ -23,24 +23,13 @@ class BaseAPIView(MethodView):
         self.serializer = serializer
         self.validator = validator
 
-    def _response_error(self, error: Exception) -> Response:
-        """Response if error occurs."""
-        response = make_response(
-            {"Error": repr(error)}, HTTPStatus.BAD_REQUEST)
-        return self._corsify_actual_response(response)
-
     def _make_response(func):
-        """The decorator makes response obj and handles errors."""
-
+        """The decorator makes response obj."""
         def wrapper(self, *args, **kwargs):
-            try:
-                serialized_data = func(self, *args, **kwargs)
-
-                response = make_response(serialized_data)
-                response.headers.add('Content-Type', 'application/json')
-                return self._corsify_actual_response(response)
-            except Exception as err:
-                return self._response_error(err)
+            serialized_data = func(self, *args, **kwargs)
+            response = make_response(serialized_data)
+            response.headers.add('Content-Type', 'application/json')
+            return self._corsify_actual_response(response)
         return wrapper
 
     @staticmethod
@@ -70,14 +59,27 @@ class BaseAPIView(MethodView):
 
 class FileAPI(BaseAPIView):
     """View class is used to send large_binary as a file."""
-    @BaseAPIView._make_response
-    def get(self):
+    def _get_item(self):
         resume_id = request.args.get('resume')
         filetype = request.args.get('type')
-        user = Resume.query.get(resume_id).user
+        if any((not resume_id, not filetype)):
+            raise BadRequestKeyError()
+
+        resume = Resume.query.get(resume_id)
+        if resume is None:
+            raise DatabaseNoResultError()
+
         file = File.query.filter(
-            File.user == user, File.filetype == filetype
+            File.user == resume.user, File.filetype == filetype
         ).first()
+        if file is None:
+            raise DatabaseNoResultError()
+
+        return file
+
+    @BaseAPIView._make_response
+    def get(self):
+        file = self._get_item()
         serializer = self.serializer()
         serialized_data = serializer.dump(file)
         data = BytesIO(serialized_data['large_binary'])
@@ -91,10 +93,10 @@ class CommonItemAPI(BaseAPIView):
         - (TODO) delete a single model instance."""
 
     def _get_item(self, id):
-        try:
-            return self.model.query.get(id)
-        except Exception as err:
-            raise err
+        item = self.model.query.get(id)
+        if item is None:
+            raise DatabaseNoResultError()
+        return item
 
     @BaseAPIView._make_response
     def get(self, id):
@@ -117,5 +119,7 @@ class CommonGroupAPI(BaseAPIView):
     @BaseAPIView._make_response
     def get(self):
         items = self.model.query.all()
+        if not items:
+            raise DatabaseNoResultError()
         serializer = self.serializer(many=True)
         return serializer.dump(items)
