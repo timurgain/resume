@@ -43,14 +43,16 @@ function Header() {
             <li className="hard-skills__item">Django</li>
             <li className="hard-skills__item">Flask</li>
             <li className="hard-skills__item">API</li>
-            <li className="hard-skills__item">JS</li>
-            <li className="hard-skills__item">TS</li>
+            <li className="hard-skills__item">JavaScript</li>
             <li className="hard-skills__item">React.js</li>
             <li className="hard-skills__item">Node.js</li>
+            <li className="hard-skills__item">CSS</li>
+            <li className="hard-skills__item">HTML</li>
             <li className="hard-skills__item">SQL</li>
             <li className="hard-skills__item">Redis</li>
-            <li className="hard-skills__item">Mongo</li>
+            <li className="hard-skills__item">MongoDB</li>
             <li className="hard-skills__item">Docker</li>
+            <li className="hard-skills__item">Nginx</li>
           </ul>
         </section>
 
@@ -60,7 +62,7 @@ function Header() {
           <ul className="education">
             <li className="education__item">
               <p className="education__subject">TypeScript, Redux.js</p>
-              <p className="education__date">June 2023</p>
+              <p className="education__date">May 2023</p>
             </li>
           </ul>
           <p className="section__subtitle">At Yandex School of Data Analysis:</p>
@@ -90,7 +92,7 @@ function Header() {
               <p className="education__date">December 2021</p>
             </li>
             <li className="education__item">
-              <p className="education__subject">SQL, Python and OOP</p>
+              <p className="education__subject">SQL, Python, OOP</p>
               <p className="education__date">September 2021</p>
             </li>
           </ul>

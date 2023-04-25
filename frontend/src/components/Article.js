@@ -48,7 +48,7 @@ function Article() {
           </li>
         </ul>
         <p className="section__paragraph">
-          Starting in 2010, I co-founded and grew a offline store with a team of
+          Starting in 2010, I co-founded and grew an offline store with a team of
           three individuals into a successful online business with over 100,000
           orders in the past five years and a team of up to 15 individuals.
           Acquired valuable skills in management, internet marketing, and web
