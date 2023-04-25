@@ -9,15 +9,15 @@ function Education({ educations, ...props }) {
     });
     educations.sort(
       (a, b) =>
-        new Date(a.courses[0].graduate_date) -
-        new Date(b.courses[0].graduate_date)
+        new Date(b.courses[0].graduate_date) -
+        new Date(a.courses[0].graduate_date)
     );
   }, [educations]);
 
   function getEducationsMarkup() {
     return educations.map((education) => {
       return (
-        <li key={education.id}>
+        <li key={education.id} className="education__school">
           <p key={education.id} className="section__subtitle">
             {education.title}
           </p>
@@ -30,7 +30,7 @@ function Education({ educations, ...props }) {
   function getCoursesMarkup(courses) {
     return courses.map((course) => {
       return (
-        <li key={course.id} className="education__item">
+        <li key={course.id} className="education__course">
           <p className="education__subject">{course.title}</p>
           <p className="education__date">
             {getMonthYear(course.graduate_date)}

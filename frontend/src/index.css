@@ -26,9 +26,10 @@
 @import url(./blocks/hard-skills/__item/hard-skills__item.css);
 
 @import url(./blocks/education/education.css);
-@import url(./blocks/education/__item/education__item.css);
-@import url(./blocks/education/__date/education__date.css);
+@import url(./blocks/education/__school/education__school.css);
+@import url(./blocks/education/__course/education__course.css);
 @import url(./blocks/education/__subject/education__subject.css);
+@import url(./blocks/education/__date/education__date.css);
 
 @import url(./blocks/languages/languages.css);
 @import url(./blocks/languages/__item/languages__item.css);

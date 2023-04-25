@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <MenuPopup />
-      <Resume />
+      <Resume rusumeId={1} />
       <Footer />
     </>
   );
