@@ -1,6 +1,6 @@
 from io import BytesIO
 from werkzeug.exceptions import BadRequestKeyError
-from flask import Response, jsonify, make_response, request, send_file
+from flask import Response, jsonify, request, send_file
 from flask.views import MethodView
 
 from ..database import db_session
@@ -23,39 +23,6 @@ class BaseAPIView(MethodView):
         self.serializer = serializer
         self.validator = validator
 
-    def _make_response(func):
-        """The decorator makes response obj."""
-        def wrapper(self, *args, **kwargs):
-            serialized_data = func(self, *args, **kwargs)
-            response = make_response(serialized_data)
-            response.headers.add('Content-Type', 'application/json')
-            return self._corsify_actual_response(response)
-        return wrapper
-
-    @staticmethod
-    def _build_cross_preflight_response() -> Response:
-        """Makes a CORS preflight response."""
-        response = make_response()
-        response.headers.add("Access-Control-Allow-Origin", "*")
-        response.headers.add("Access-Control-Allow-Headers", "*")
-        response.headers.add("Access-Control-Allow-Methods", "*")
-        return response
-
-    @staticmethod
-    def _corsify_actual_response(response: Response) -> Response:
-        """Adds header param to the actual response. CORS needs it."""
-        response.headers.add("Access-Control-Allow-Origin", "*")
-        return response
-
-    @staticmethod
-    def _secure_response(response: Response) -> Response:
-        """Protects from cross-site scripting(XSS)."""
-        response.headers.add("Content-Security-Policy", "default-src 'self';")
-
-    def options(self, *args, **kwargs):
-        """Handles preflight OPTIONS method request, if CORS is used."""
-        return self._build_cross_preflight_response()
-
 
 class FileAPI(BaseAPIView):
     """View class is used to send large_binary as a file."""
@@ -77,7 +44,6 @@ class FileAPI(BaseAPIView):
 
         return file
 
-    @BaseAPIView._make_response
     def get(self):
         file = self._get_item()
         serializer = self.serializer()
@@ -98,7 +64,6 @@ class CommonItemAPI(BaseAPIView):
             raise DatabaseNoResultError()
         return item
 
-    @BaseAPIView._make_response
     def get(self, id):
         item = self._get_item(id)
         serializer = self.serializer()
@@ -116,7 +81,6 @@ class CommonGroupAPI(BaseAPIView):
         - representing a collection of model instances,
         - (TODO) creating a single model instance."""
 
-    @BaseAPIView._make_response
     def get(self):
         items = self.model.query.all()
         if not items:

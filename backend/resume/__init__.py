@@ -11,13 +11,19 @@ from .database import db_session, init_db
 from .error_handlers import (db_query_error, page_not_found, server_error,
                              url_query_params_error)
 from .exceptions import DatabaseNoResultError
+from .middlewares.cors import add_cors_headers
 
 
 # Flask will automatically detect the create_app() factory function
 #  and use it to create an application instance
 def create_app(config_class=Config):
+
+    # Create app
     app = Flask(__name__)
     app.config.from_object(config_class)
+
+    # Register cors middleware
+    app.after_request(add_cors_headers)
 
     # Configure the JSON settings
     app.json.ensure_ascii = False
