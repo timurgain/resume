@@ -33,6 +33,8 @@ class PdfConstructor {
     return element
   }
 
+  // >> TODO FIX << : img src blob:url doesnt appear in pdf file. May be needed to convert into a file...
+
   savePdfFile() {
     this._elementClone = this._cloneElementForPdf();
     this._elementForPdf = this._adaptElementForPdf(this._elementClone);

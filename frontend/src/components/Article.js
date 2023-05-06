@@ -4,7 +4,7 @@ function Article() {
       <section className="section">
         <h2 className="section__title">Experience</h2>
         <p className="section__paragraph section__paragraph_layout_above-list">
-          Python developer, Business manager | alfabook.ru | 2019-2023
+          Python developer | alfabook.ru | 2019-2023
         </p>
         <ul className="list">
           <li className="list__item">
@@ -31,8 +31,8 @@ function Article() {
         </p>
         <ul className="list">
           <li className="list__item">
-            Managed the online store website, including filling and setting
-            tasks for a web studio.
+            Managed the online store website, including content management and
+            setting tasks for web studios.
           </li>
           <li className="list__item">
             Promoted the store through Yandex.Direct, Google Ads, FB Ads, and
@@ -48,11 +48,11 @@ function Article() {
           </li>
         </ul>
         <p className="section__paragraph">
-          Starting in 2010, I co-founded and grew an offline store with a team of
-          three individuals into a successful online business with over 100,000
-          orders in the past five years and a team of up to 15 individuals.
-          Acquired valuable skills in management, internet marketing, and web
-          development through this experience.
+          Starting in 2010, I co-founded and grew an offline store with a team
+          of three individuals into a successful online business with over
+          100,000 orders in the past five years and a team of up to 15
+          individuals (dec 2022). Acquired valuable skills in management,
+          internet marketing, and web development through this experience.
         </p>
       </section>
 
@@ -102,10 +102,9 @@ function Article() {
       <section className="section">
         <h2 className="section__title">About</h2>
         <p className="section__paragraph">
-          I like technology, science, bikes, and exploring new ideas
-          through audiobooks. I can keep up a conversation about topics ranging
-          from computer games to planets, or discuss the fate of the Karamazov
-          brothers and Frank Algernon Cowperwood.
+          I can keep up a conversation about technology, science, bikes,
+          computer games, planets, or discuss the fate of the Karamazov brothers
+          and Frank Algernon Cowperwood.
         </p>
         <p className="section__paragraph">
           I am interested in web development projects that align with my values
