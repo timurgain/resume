@@ -1,7 +1,7 @@
 from datetime import datetime
 
-from sqlalchemy import (Boolean, Column, DateTime, Enum, ForeignKey, Integer,
-                        LargeBinary, String, Table, Text)
+from sqlalchemy import (Column, Enum, ForeignKey, Integer, LargeBinary, String,
+                        Text)
 from sqlalchemy.orm import relationship
 
 from ..database import Base
@@ -73,7 +73,8 @@ class User(BaseModel):
     github = Column(String(100))
 
     files = relationship('File', back_populates='user',
-                         cascade="all, delete", passive_deletes=True, lazy='dynamic')
+                         cascade="all, delete", passive_deletes=True,
+                         lazy='dynamic')
     hard_skills = relationship('UsersHardSkills', back_populates='user')
     languages = relationship('UsersLanguages', back_populates='user')
     educations = relationship('Education', back_populates='user',

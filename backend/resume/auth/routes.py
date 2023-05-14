@@ -1,5 +1,5 @@
 from . import bp
-from .views import login, signup, logout
+from .views import login, logout, signup
 
 # URL generation rule: domen/blueprint_url_prefix/bp.add_url_rule('...',)
 

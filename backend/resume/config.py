@@ -17,8 +17,10 @@ class Config:
     }
 
     # ЕСЛИ PostgreSQL и psycopg2 DBAPI
-    # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://root:pass@localhost/mydb'
+    # SQLALCHEMY_DATABASE_URI= 'postgresql+psycopg2://root:pass@localhost/mydb'
 
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URI')\
+    SQLALCHEMY_DATABASE_URI = (
+        os.environ.get('DATABASE_URI')
         or 'sqlite:///' + os.path.join(basedir, 'resume.db')
+    )
     SQLALCHEMY_TRACK_MODIFICATIONS = False

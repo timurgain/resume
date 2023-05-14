@@ -1,17 +1,17 @@
 from io import BytesIO
-from werkzeug.exceptions import BadRequestKeyError
+
 from flask import Response, jsonify, request, send_file
 from flask.views import MethodView
+from werkzeug.exceptions import BadRequestKeyError
 
 from ..database import db_session
-from ..models.models import File, Resume
 from ..exceptions import DatabaseNoResultError
+from ..models.models import File, Resume
 
 
 def index() -> Response:
     """Temporary main page."""
-    response = jsonify({"temporary_text": "Main page data"})
-    return response
+    return jsonify({"temporary_text": "Main page data"})
 
 
 class BaseAPIView(MethodView):

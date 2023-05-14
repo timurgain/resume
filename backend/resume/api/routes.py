@@ -1,10 +1,10 @@
-from ..models.models import (Course, Education, HardSkill, Language, Resume,
-                             User, File, UsersHardSkills, UsersLanguages)
+from ..models.models import (Course, Education, File, HardSkill, Language,
+                             Resume, User)
 from . import bp
 from .serializers import (CourseSerializer, EducationSerializer,
-                          HardSkillSerializer, LanguageSerializer,
-                          ResumeSerializer, UserSerializer, FileSerializer)
-from .views import CommonGroupAPI, CommonItemAPI, index, FileAPI
+                          FileSerializer, HardSkillSerializer,
+                          LanguageSerializer, ResumeSerializer, UserSerializer)
+from .views import CommonGroupAPI, CommonItemAPI, FileAPI, index
 
 # URL generation rule: domen/blueprint_url_prefix/bp.add_url_rule('...',)
 
@@ -30,7 +30,8 @@ common_api_models = (
 
 def register_common_api(blueprint, name, model, serializer):
     """It produces standard REST API for specific models.
-    https://flask.palletsprojects.com/en/2.2.x/views/?highlight=methodview#method-dispatching-and-apis"""
+    (https://flask.palletsprojects.com/en/2.2.x/views/?highlight
+    =methodview#method-dispatching-and-apis)"""
 
     blueprint.add_url_rule(
         rule=f"/{name}/<int:id>",
