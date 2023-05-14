@@ -1,6 +1,6 @@
 from http import HTTPStatus
 
-from flask import jsonify, make_response, Response
+from flask import Response, jsonify, make_response
 from flask.views import MethodView
 
 from ..database import db_session

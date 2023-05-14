@@ -1,10 +1,9 @@
-from .config import Config
 from flask import Flask
 
 from .admin import bp as admin_bp
-from .auth import bp as auth_bp
 from .api import bp as api_bp
-
+from .auth import bp as auth_bp
+from .config import Config
 from .database import db_session, init_db
 
 

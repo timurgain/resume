@@ -1,10 +1,10 @@
 """
 This module runs and works separatly from the main flask app, when you need it.
 """
+import csv
+import logging
 import os
 import sys
-import logging
-import csv
 
 # define carrent dir as base dir
 #   to import moduls from the same dir as this script
@@ -15,7 +15,6 @@ from resume.database import db_session, init_db
 from resume.models.models import (Course, Education, File, HardSkill, Language,
                                   Resume, User, UsersHardSkills,
                                   UsersLanguages)
-
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
