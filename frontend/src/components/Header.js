@@ -62,7 +62,7 @@ function Header() {
           <ul className="education">
             <li className="education__item">
               <p className="education__subject">TypeScript, Redux.js</p>
-              <p className="education__date">May 2023</p>
+              <p className="education__date">July 2023</p>
             </li>
           </ul>
           <p className="section__subtitle">At Yandex School of Data Analysis:</p>
