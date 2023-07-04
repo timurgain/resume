@@ -2,16 +2,32 @@
 
 ## Description
 
-It's a pet-project and a CV all in one (initial stage)
+It's a resume-constructor and a pet-project all in one (developing stage).
+The final project will look like this:
+- Main page with a list of resumes, pagination and filters;
+- One resume view page;
+- One resume editing page;
+- Authorization and registration page.
 
-[Link on the GitHub Pages](https://timurgain.github.io/resume/)
+ For today, the resume view page with side-menu is available - [Look it on the GitHubPages](https://timurgain.github.io/resume-flask-react/)
+
+---
 
 ## Technologies
-For now there is:
+
+### Frontend
+- JavaScript;
+- React.js;
 - HTML5 and semantic tags;
 - CSS3 and grid layout, flexbox, adaptive, @media, @font-face;
-- Block Element Modifier methodology
+- Block Element Modifier methodology;
 - ...
 
-I am planning to set up a python application, depends on free time
+### Backend
+- Python;
+- Flask;
+- SQLAlchemy;
+- Marshmallow;
+- SQLite or PostgreSQL;
+- ...
 
