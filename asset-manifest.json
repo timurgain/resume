@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/resume/static/css/main.662f650a.css",
-    "main.js": "/resume/static/js/main.d3e8f691.js",
-    "static/js/787.cda612ba.chunk.js": "/resume/static/js/787.cda612ba.chunk.js",
-    "static/media/Inter-Bold.woff": "/resume/static/media/Inter-Bold.93c1301bd9f486c573b3.woff",
-    "static/media/Inter-Medium.woff": "/resume/static/media/Inter-Medium.9053572c46aeb4b16caa.woff",
-    "static/media/Inter-Regular.woff": "/resume/static/media/Inter-Regular.8c206db99195777c6769.woff",
-    "static/media/Inter-Bold.woff2": "/resume/static/media/Inter-Bold.ec64ea577b0349e055ad.woff2",
-    "static/media/Inter-Medium.woff2": "/resume/static/media/Inter-Medium.293fd13dbca5a3e450ef.woff2",
-    "static/media/Inter-Regular.woff2": "/resume/static/media/Inter-Regular.c8ba52b05a9ef10f4758.woff2",
-    "static/media/TM.jpg": "/resume/static/media/TM.d812b338160abb0cc560.jpg",
-    "index.html": "/resume/index.html",
-    "main.662f650a.css.map": "/resume/static/css/main.662f650a.css.map",
-    "main.d3e8f691.js.map": "/resume/static/js/main.d3e8f691.js.map",
-    "787.cda612ba.chunk.js.map": "/resume/static/js/787.cda612ba.chunk.js.map"
+    "main.css": "/resume-flask-react/static/css/main.8ab78d5a.css",
+    "main.js": "/resume-flask-react/static/js/main.a2faaebb.js",
+    "static/js/787.cda612ba.chunk.js": "/resume-flask-react/static/js/787.cda612ba.chunk.js",
+    "static/media/Inter-Bold.woff": "/resume-flask-react/static/media/Inter-Bold.93c1301bd9f486c573b3.woff",
+    "static/media/Inter-Medium.woff": "/resume-flask-react/static/media/Inter-Medium.9053572c46aeb4b16caa.woff",
+    "static/media/Inter-Regular.woff": "/resume-flask-react/static/media/Inter-Regular.8c206db99195777c6769.woff",
+    "static/media/Inter-Bold.woff2": "/resume-flask-react/static/media/Inter-Bold.ec64ea577b0349e055ad.woff2",
+    "static/media/Inter-Medium.woff2": "/resume-flask-react/static/media/Inter-Medium.293fd13dbca5a3e450ef.woff2",
+    "static/media/Inter-Regular.woff2": "/resume-flask-react/static/media/Inter-Regular.c8ba52b05a9ef10f4758.woff2",
+    "static/media/TM.jpg": "/resume-flask-react/static/media/TM.d812b338160abb0cc560.jpg",
+    "index.html": "/resume-flask-react/index.html",
+    "main.8ab78d5a.css.map": "/resume-flask-react/static/css/main.8ab78d5a.css.map",
+    "main.a2faaebb.js.map": "/resume-flask-react/static/js/main.a2faaebb.js.map",
+    "787.cda612ba.chunk.js.map": "/resume-flask-react/static/js/787.cda612ba.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.662f650a.css",
-    "static/js/main.d3e8f691.js"
+    "static/css/main.8ab78d5a.css",
+    "static/js/main.a2faaebb.js"
   ]
 }
